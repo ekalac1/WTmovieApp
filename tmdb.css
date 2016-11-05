@@ -1,6 +1,14 @@
-
 body {
     background-color: #303030;
+}
+
+p {
+    color: ghostwhite;
+    text-align: justify;
+}
+p.h
+{
+    text-align: center;
 }
 
 p.image_title {
@@ -11,20 +19,34 @@ p.image_title {
     font-size: 1.2em;
     font-weight: bold;
 }
-p.link
-{
+
+p.link {
     color: gold;
     padding: 2%;
     text-decoration: underline;
     margin-bottom: 1%;
 }
 
-h2
-{
+h1 {
+    font-size: 300%;
+    color: white;
+    text-align: center;
+}
+
+h2 {
     padding-left: 2%;
     padding-right: 2%;
     padding-top: 1%;
     color: ghostwhite;
+}
+
+h3 {
+    color: whitesmoke;
+    font-size: 130%
+}
+
+img.movie {
+    width: 10%;
 }
 
 ul {
@@ -38,17 +60,24 @@ li {
     display: inline;
     padding: 2%;
 }
-li.active
-{
+
+li.active {
     font-weight: bold;
     color: white;
 }
+
 a {
     color: whitesmoke;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 130%;
 }
 
+a.p
+{
+     color: blue;
+    text-decoration: underline;
+    font-size: 100%;
+}
 .red.meni {
     text-align: center;
     margin-bottom: 2%;
@@ -58,49 +87,71 @@ a {
 .red {
     width: 100%;
     float: left;
-     margin-bottom: 2%;
+    margin-bottom: 2%;
     display: inline-block;
 }
-.red:first-child
-{
+
+.red:first-child {
     margin-top: 1%;
 }
 
-.kolona {
-    margin-left: 5%;
-    margin-right: 5%;
-    float: left;
+[class*="kolona "] {
+    width: 80%;
+    margin: auto;
 }
 
-.kolona:first-child {
-    margin-left: 6%;
-}
-
-.kolona:last-child {
-    margin-right: 6%;
-}
-
-.kolona.cetri {
-    width: 100%;
-}
-
-.kolona.tri {
-    width: 74%;
-}
-
-.kolona.dva {
-    width: 38%;
-    background-color: black;
-}
-
-.kolona.jedan {
-    width: 14%;
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-size: 400%;
+        text-align: center;
+    }
+    img.movie {
+        width: 3%;
+    }
+    a {
+        color: whitesmoke;
+        text-decoration: none;
+        font-size: 200%;
+    }
+    a:hover {
+        font-size: 240%;
+        color: white;
+    }
+    a.p
+    {
+        font-size: 120%
+        
+    }
+    a.p:hover {
+        color: blue;
+    }
+    .kolona {
+        margin-left: 5%;
+        margin-right: 5%;
+        float: left;
+        background-color: transparent;
+    }
+    .kolona:first-child {
+        margin-left: 6%;
+    }
+    .kolona:last-child {
+        margin-right: 6%;
+    }
+    .kolona.cetri {
+        width: 88%;
+    }
+    .kolona.tri {
+        width: 74%;
+    }
+    .kolona.dva {
+        width: 38%;
+        background-color: black;
+    }
+    .kolona.jedan {
+        width: 14%;
+    }
 }
 
 img {
     width: 100%;
-}
-img.movie
-{
-    width: 3%;
 }
