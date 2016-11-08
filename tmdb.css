@@ -83,6 +83,16 @@ a.p
     text-align: center;
     margin-bottom: 2%;
     margin-top: 0.2%;
+    display: inline-block;
+}
+.red.login {
+    text-align: left;
+    margin-bottom: 2%;
+    margin-top: 0.2%;
+    margin-left: 6%;
+    margin-right: 6%;
+    display: inline-block;
+    color: whitesmoke;
 }
 
 .red {
