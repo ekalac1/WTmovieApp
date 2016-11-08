@@ -98,7 +98,6 @@ a.p
 .red {
     width: 100%;
     float: left;
-    margin-bottom: 2%;
     display: inline-block;
 }
 
@@ -115,9 +114,21 @@ a.p
 {
     background-color: black;
     overflow: hidden;
+    margin-bottom: 2%;
 }
 
 @media only screen and (min-width: 600px) {
+    .red {
+    width: 100%;
+    float: left;
+    margin-bottom: 0.5%;
+    display: inline-block;
+}
+    .kolona.dva.crna
+{
+    background-color: black;
+    overflow: hidden;
+}
     h1 {
         font-size: 400%;
         text-align: center;
