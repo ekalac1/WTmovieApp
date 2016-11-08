@@ -51,8 +51,9 @@ img.movie {
 
 ul {
     list-style-type: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
+    
 }
 
 li {
@@ -96,8 +97,14 @@ a.p
 }
 
 [class*="kolona "] {
-    width: 80%;
+    width: 90%;
     margin: auto;
+}
+
+.kolona.dva.crna
+{
+    background-color: black;
+    overflow: hidden;
 }
 
 @media only screen and (min-width: 600px) {
@@ -145,7 +152,7 @@ a.p
     }
     .kolona.dva {
         width: 38%;
-        background-color: black;
+        overflow: hidden; 
     }
     .kolona.jedan {
         width: 14%;
