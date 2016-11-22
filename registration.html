@@ -2,38 +2,28 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Registration</title>
     <link rel="stylesheet" href="tmdb.css"> </head>
 
 <body>
-    <div class="red meni">
-        <ul>
-            <li><a href="tmdb.html">Movie</a></li>
-            <li><a href="news.html">News</a></li>
-            <li>
-                <a href="movieApp.html"><img class="movie" src="Slike/movie.svg" alt="neki_tekst "></a>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-        </ul>
-    </div>
     <div class="red login">
         <ul>
-            <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="Username" />
-            <br>
-            <br>
-            <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="Password" />
-            <br>
-            <br>
-            <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="eMail" />
-            <form>
+            <form method="post" onsubmit="return validateRegistration()">
+                <input id="usernamereg" name="usernamesignup" type="text" placeholder="Username" />
+                <br>
+                <br>
+                <input id="passwordreg" name="usernamesignup" type="text" placeholder="Password" />
+                <br>
+                <br>
+                <input id="email" name="usernamesignup" type="text" placeholder="eMail" />
                 <p>Do you agree to the terms and conditions?</p>
                 <input type="radio" name="gender" value="male" checked> Yes
                 <br>
                 <input type="radio" name="gender" value="female"> No
-                <br> </form>
-            <input type="submit" value="Submit"> </ul>
+                <br>
+                <br>
+                <input type="submit" value="Submit"> </form>
+            <p class="alert" id="mssg"></p>
+        </ul>
     </div>
 </body>
 
