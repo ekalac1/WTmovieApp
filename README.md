@@ -10,6 +10,12 @@ Forme za login i registraciju , i feedback nakon FAQ.
 Implementirane su sve podstranice, korišten je grid view, a za mobilne uređaje korišten je media query. 
 Postoji meni na kojem su linkovi na sve podstranice. 
 
+Šta je urađeno, spirala 2?  
+DropDown meni, reload stranica, validacija formi, te na Movie podstranici, kada se klikne na sliku, ona se raširi, a na esc pojavi se stari sadržaj. 
+
+-Bug(možda)
+Slika se pojavljuje ispod menija, a ne preko cijelog ekrana. 
+
 
 Lista fajlova  
 Slike/... - Slike korištene u izradi  
