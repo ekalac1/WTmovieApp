@@ -33,7 +33,7 @@ $error=true;}
                 <form method="post" name="myForm">
                         <input type="submit" onclick="login.php"><a href="login.php">Login</a> </form>
                 <a>
-                    <input type="submit" value="Registracija" onclick='reloadPage("registration.html")'> </a>
+                    <input type="submit" value="Registracija" onclick='reloadPage("registration.php")'> </a>
             </ul>
             <ul>
                 <p id="valtext"></p>

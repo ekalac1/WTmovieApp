@@ -9,23 +9,38 @@ session_start(); ?>
         <link rel="stylesheet" href="tmdb.css"> </head>
     <?php
 
-$xmlDoc = new DOMDocument();
-$xmlDoc->load("vijesti.xml");
-
-$x=$xmlDoc->getElementsByTagName('vijest'); 
-$xml=simplexml_load_file("vijesti.xml") or die("Greška!");
-
-for ($i=0; $i<$x->length; $i=$i+1) {
-echo '<div class="red ">
+        
+        $veza = new PDO("mysql:dbname=spirala4;host=localhost;charset=utf8", "spirala4user", "password");
+        
+$veza->exec("set names utf8");
+    
+     $rezultat = $veza->query("select id, naslov, tekst, UNIX_TIMESTAMP(vrijeme) vrijeme2, autor from vijesti order by vrijeme desc");
+     if (!$rezultat) {
+          $greska = $veza->errorInfo();
+          print "SQL greška: " . $greska[2];
+          exit();
+     }
+     foreach ($rezultat as $vijest) {
+         echo '<div class="red ">
             <div class="kolona dva crna ">
-                <h2>'.$xml->vijest[$i]->title.'</h2>
-                <p class="link">'.$xml->vijest[$i]->link.'</p>
+            <h2>'.$vijest['id'].'</h2>
+                <h2>'.$vijest['naslov'].'</h2>
+                <p class="link">'.$vijest['tekst'].'</p>
             </div>';
-
-}
-
-?>
-        <?php
+         $id=$vijest['id'];
+         $komentari=$veza->query("select * from komentar where autor='$id'");
+         if (!$komentari)
+         {
+          $greska = $veza->errorInfo();
+          print "SQL greška: komentar " . $greska[2];
+          exit();
+         }
+         foreach($komentari as $comm)
+             echo '<div class="red ">
+            <div class="kolona dva crna ">
+            <p>'.$comm['tekst'].'</p>
+            </div>';
+     }
     
     if (isset($_SESSION['username']))
     echo ' <div class="red login ">
@@ -72,6 +87,26 @@ echo '<div class="red ">
                     <input type="text" placeholder="Novi naslov vijesti(ostavite prazno ukoliko ne zelite mjenjati)" name="naslovnova"id="naslov">
                     <input type="text" placeholder="Novi link vijesti (ostavite prazno ukoliko ne zelite mjenjati)" name="linknova"id="naslov">
                     <input type="submit" name="edit" value="Promjeni odabranu vijest"> </form>
+            </ul>
+        </div>
+        <div class="red login ">
+            <ul>
+                <ul>
+                    <h2>Dodaj komentar</h2>
+                </ul>
+                <form method="post" action="dodajKomentar.php" name="edit">
+                    <input type="text" placeholder="ID komentara" name="id">
+                    <input type="text" placeholder="Komentar" name="text" id="naslov">
+                    <input type="submit" name="edit" value="Dodaj komentar"> </form>
+            </ul>
+        </div>
+        ';
+        
+        if (isset($_SESSION['username']) && ($_SESSION['username']=='admin'))
+            echo  '<div class="red login ">
+            <ul>
+                <form method="post" action="prebaci.php" name="prebaci">
+                    <input type="submit" name="prebaci" value="Prebaci iz XML u bazu"> </form>
             </ul>
         </div>';
     ?>

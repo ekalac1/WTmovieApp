@@ -7,21 +7,22 @@
 <body>
     <div class="red login">
         <ul>
-            <form method="post" onsubmit="return validateRegistration()">
-                <input id="usernamereg" name="usernamesignup" type="text" placeholder="Username" />
+            <form method="post" action="dodajAutora.php" name="registracija">
+                <input name="username" type="text" placeholder="Username" />
                 <br>
                 <br>
-                <input id="passwordreg" name="usernamesignup" type="text" placeholder="Password" />
+                <input name="password" type="text" placeholder="Password" />
                 <br>
                 <br>
-                <input id="email" name="usernamesignup" type="text" placeholder="eMail" />
+                <input name="email" type="text" placeholder="eMail" />
                 <p>Do you agree to the terms and conditions?</p>
                 <input type="radio" name="gender" value="male" checked> Yes
                 <br>
                 <input type="radio" name="gender" value="female"> No
                 <br>
                 <br>
-                <input type="submit" value="Submit"> </form>
+                <input type="submit" value="Submit" name="registracija">
+            </form>
             <p class="alert" id="mssg"></p>
         </ul>
     </div>

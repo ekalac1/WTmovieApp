@@ -1,3 +1,5 @@
+<?php 
+session_start(); ?>
 <?php
 
 if (isset($_POST['insert']))
@@ -9,19 +11,39 @@ if (isset($_POST['insert']))
     $name =$_POST['naslov'];
     $adresa=$_POST['adresa'];
     
-    $rootTag = $xml->getElementsByTagName("vijesti")->item(0);
+    $username=$_SESSION['username'];
     
-    $infoTag = $xml->createElement("vijest");
-    $naslovTag = $xml->createElement("title" ,$name);
-    $linkTag = $xml->createElement("link" ,$adresa);
+    $id=0;
     
-    $infoTag->appendChild($naslovTag);
-    $infoTag->appendChild($linkTag);
+   $veza = new PDO("mysql:dbname=spirala4;host=localhost;charset=utf8", "spirala4user", "password");
+$veza->exec("set names utf8");
     
-    $rootTag->appendChild($infoTag);
-    $xml->save('vijesti.xml');
+    $autori =$veza->query("SELECT * from autor where username='$username' order by id");
+    if (!$autori)
+    {
+         $greska = $veza->errorInfo();
+          print "SQL greška autora: " . $greska[2];
+          exit();
+    }
+    else 
+    {
+        foreach($autori as $autor)
+        {
+         $id=$autor['id']; 
+        }
+    }
     
-    header('Location: index.php');
+    $rezultat = $veza->query ('INSERT INTO vijesti '.
+ '(naslov,tekst,autor) '.
+ 'VALUES ("'.$name.'", "'.$adresa.'", "'.$id.'")');
+     if (!$rezultat) {
+          $greska = $veza->errorInfo();
+          print "SQL greška: " . $greska[2];
+          exit();
+     }
+    else header('Location: index.php');
+    
+  //  header('Location: index.php');
 }
 
 ?>

@@ -1,28 +1,35 @@
 <?php
 
-$xml=simplexml_load_file('vijesti.xml');
-
-$i=-1;
 
 $staraVijestNaslov =$_POST['naslov'];
 $novaVijestNaslov =$_POST['naslovnova'];
 $novaVijestLink =$_POST['linknova'];
 
-foreach($xml->children() as $vijest)
+$veza = new PDO("mysql:dbname=spirala4;host=localhost;charset=utf8", "spirala4user", "password");
+$veza->exec("set names utf8");
+
+if ($novaVijestNaslov!="")
 {
-    $temp=$vijest->title;
-    
-    if ($temp==$staraVijestNaslov)
-    {
-        if($novaVijestNaslov!="")
-            $vijest->title=$novaVijestNaslov;
-        if($novaVijestLink!="")
-            $vijest->link=$novaVijestLink;
-        
-    }
+$rezultat = $veza->query("update vijesti 
+set naslov='$novaVijestNaslov'
+where naslov='$staraVijestNaslov' order by id desc");
+     if (!$rezultat) {
+          $greska = $veza->errorInfo();
+          print "SQL greška:  " . $greska[2];
+          exit();
+     }
 }
-    
-    file_put_contents("vijesti.xml", $xml->saveXML());
+else if ($novaVijestLink!="")
+{
+    $rezultat = $veza->query("update vijesti 
+set tekst='$novaVijestLink'
+where naslov='$staraVijestNaslov' order by tekst desc");
+     if (!$rezultat) {
+          $greska = $veza->errorInfo();
+          print "SQL greška: 2 " . $greska[2];
+          exit();
+     }
+}
 
 header('Location: index.php');
 

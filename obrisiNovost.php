@@ -1,22 +1,18 @@
 <?php
 
-
-    $xml = new DomDocument("1.0", "UTF-8");
-    $xml->load("vijesti.xml");
-
+    $veza = new PDO("mysql:dbname=spirala4;host=localhost;charset=utf8", "spirala4user", "password");
+    $veza->exec("set names utf8");
     
     $name =$_POST['naslov'];
-   
-    $xpath=new DOMXPATH($xml);
-    foreach($xpath->query("/vijesti/vijest[title= '$name']") as $node)
-    {
-        $node->parentNode->removeChild($node);
-    }
-    
-    
-    $xml->formatoutput=true;
-    $xml->save('vijesti.xml');
 
+    $rezultat = $veza->query("delete from vijesti 
+    where naslov='$name' order by id desc");
+     if (!$rezultat) {
+          $greska = $veza->errorInfo();
+          print "SQL greška:  " . $greska[2];
+          exit();
+     }
+   
 header('Location: index.php');
 
 ?>
