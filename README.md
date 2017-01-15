@@ -4,7 +4,9 @@
 
 Kreirana je baza sa 3 tabele, vijest, komentar i autor, i sada je na stranici omogućeno registrovanje te dodavanje članaka , brisanje i uređivanje. Takođe, samo admin može vidjeti button PREBACI IZ XML U SQL. Pokušala sam ne duplirati podatke, tako što sam koristila COUNT za naslove, ali COUNT uvijek vraća nulu, kao da naslova nema u bazi (a ima). 
 Takođe, sve što je prije radilo sam XML, sada radi sa bazom. SQL injection nije posvećena neka posebna pažnja, osim što se password ne čuva u izvornom obliku nego kao MD5 hash. 
-Pokušala sam deploy na openShift. Kreiram projekat, i sql i wtmovieapp, otvorim phpmyadmin, i onda mi kaze da imam privilegije da importujem bazu. 
+Pokušala sam deploy na openShift. Kreiram projekat, i sql i wtmovieapp, otvorim phpmyadmin, i onda mi kaze da nemam privilegije da importujem bazu. 
+Pokušala sam i servis, ali...
+http://wtmovieapp-wtapp.44fs.preview.openshiftapps.com/
 
 Spirala 3
 
